@@ -1,6 +1,7 @@
 const test = require( 'node:test');
 const assert = require("node:assert");
 const { RecursiveFunctions } = require("./recursiveFunctions");
+const { IterativeFunctions } = require("./iterativeFunctions");
 
 const { describe, it } = test;
 
@@ -89,5 +90,60 @@ describe('Test suite', () => {
         });
     })
     describe('Iterative functions should be equal iterative', () => {
+        it('factorial', () => {
+            const inputs = [2, 3, 4, 5, 10];
+            inputs.forEach(input => {
+                assert.strictEqual(RecursiveFunctions.factorial(input), IterativeFunctions.factorial(input));
+            });
+        });
+        it('fibonacci', () => {
+            const inputs = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            inputs.forEach(input => {
+                assert.strictEqual(RecursiveFunctions.fibonacci(input), IterativeFunctions.fibonacci(input));
+            });
+        });
+        it('sumArray', () => {
+            const inputs = [[44,84,89,78,9,874], [878,89,79,2548,856,56,7,89,9], [785,5,59,7786976,41,6,8,98]];
+            inputs.forEach(input => {
+                assert.strictEqual(RecursiveFunctions.sumArray(input), IterativeFunctions.sumArray(input));
+            });
+        });
+        it('reverseString', () => {
+            const inputs = ["hello", "world", "hello world", "madam", "nurses run"];
+            inputs.forEach(input => {
+                assert.strictEqual(RecursiveFunctions.reverseString(input), IterativeFunctions.reverseString(input));
+            });
+        });
+        it('findMax', () => {
+            const inputs = [[1, 2, 3, 4, 5], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1, 2, 3, 4, 5, 10, 45818544554,11, 516, 41856, 1]];
+            inputs.forEach(input => {
+                assert.strictEqual(RecursiveFunctions.findMax(input), IterativeFunctions.findMax(input));
+            });
+        });
+        it('power', () => {
+            const inputs = [[53, 43], [54, 8], [54, 1], [5, 8], [8, 3]];
+            inputs.forEach(input => {
+                assert.strictEqual(RecursiveFunctions.power(input[0], input[1]), IterativeFunctions.power(input[0], input[1]));
+            });
+        });
+        it('gcd', () => {
+            for (let i = 0; i < 11; i++) {
+                for (let j = 0; j < 11; j++) {
+                    assert.strictEqual(RecursiveFunctions.gcd(i, j), IterativeFunctions.gcd(i, j));
+                }
+            }
+        });
+        it('isPalindrome', () => {
+            const inputs = ["madam", "nursesrun", "hello", "world", "hello world"];
+            inputs.forEach(input => {
+                assert.strictEqual(RecursiveFunctions.isPalindrome(input), IterativeFunctions.isPalindrome(input));
+            });
+        });
+        it('flattenArray', () => {
+            const inputs = [[1, 2, 3, [4, 5]], [1, 2, 3, [4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15, 16]]];
+            inputs.forEach(input => {
+                assert.deepStrictEqual(RecursiveFunctions.flattenArray(input), IterativeFunctions.flattenArray(input));
+            });
+        })
     });
 });
